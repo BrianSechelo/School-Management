@@ -75,33 +75,3 @@ class Grading:
                 print(f"No marks available for student {student_id}.")
         else:
             print(f"Student ID {student_id} not found.")
-
-from student import Student
-from grading import Grading
-
-# Initialize grading system
-grading = Grading()
-
-# Load data from files
-Student.loadFromCSV()
-grading.loadGradesFromCSV()
-
-# Add a new student
-Student.student_list.append(Student.addStudent())
-
-# Add subjects and assign marks
-grading.addSubject("Math")
-grading.addSubject("Science")
-grading.assignMarks("S001", "Math", 85)
-grading.assignMarks("S001", "Science", 90)
-
-# View all students and their marks
-print("\nStudent List:")
-Student.viewStudents()
-
-print("\nMarks for S001:")
-grading.viewMarks("S001")
-
-# Save updated data
-Student.saveToCSV()
-grading.saveGradesToCSV()
