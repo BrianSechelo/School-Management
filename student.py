@@ -12,14 +12,18 @@ class Student:
         studentId = f"S{Student.id_counter:03}"
         Student.id_counter += 1
         while True:
-            firstName = input("Enter the First Name: ")
+            firstName = input("Enter the First Name: ").strip()
             if not firstName.isalpha():
                 print("First Name is in wrong format")
                 continue
-            lastName  = input("Enter Second Name: ")
+            lastName  = input("Enter Second Name: ").strip()
             if not lastName.isalpha():
                 print("Last Name is in wrong format")
                 continue
+            for student in Student.student_list:
+                if student.stId == studentId:
+                    print(f"Error: Student ID {studentId} already exists.")
+                    return
             return Student(studentId, firstName, lastName)
     def viewStudents():
         if not Student.student_list:
@@ -85,18 +89,3 @@ class Student:
                     print("Deletion Cancelled")
                     return
         print("Student Not Found")
-
-Student.loadFromCSV()
-
-'''for i in range(3):
-    Student.student_list.append(Student.addStudent())
-print("\nBefore Deletion")
-Student.viewStudents()
-
-Student.saveToCSV()
-
-Student.deleteStudent()
-print("\nAfter Deletion")
-'''
-Student.viewStudents()
-Student.saveToCSV()
